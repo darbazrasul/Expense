@@ -64,6 +64,7 @@ class _NewExpenseState extends State<NewExpense> {
         catagory: _selectedCatagory,
       ),
     );
+    Navigator.of(context).pop();
   }
 
   @override
@@ -76,7 +77,7 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(
@@ -125,20 +126,20 @@ class _NewExpenseState extends State<NewExpense> {
               DropdownButton(
                 items: Catagory.values
                     .map(
-                      (Catagory) => DropdownMenuItem(
+                      (catagory) => DropdownMenuItem(
                         value: _selectedCatagory,
-                        child: Text(Catagory.name.toUpperCase()),
+                        child: Text(catagory.name.toUpperCase()),
                       ),
                     )
                     .toList(),
                 onChanged: (value) {
                   if (value == null) {
                     return;
+                  } else {
+                    setState(() {
+                      _selectedCatagory = value;
+                    });
                   }
-
-                  setState(() {
-                    _selectedCatagory = value;
-                  });
                 },
               ),
               // ignore: deprecated_member_use),
