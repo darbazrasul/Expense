@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:xarje_app/src/model/expense.dart';
 import 'expense_list/expenses_list.dart';
@@ -33,8 +32,14 @@ class _ExpensesState extends State<Expenses> {
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => const NewExpense(),
+      builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registerexpenses.add(expense);
+    });
   }
 
   @override

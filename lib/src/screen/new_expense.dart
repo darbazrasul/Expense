@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:xarje_app/src/model/expense.dart';
 
 class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
-
+  const NewExpense({super.key, required this.onAddExpense});
+  final void Function(Expense expense) onAddExpense;
   @override
   State<NewExpense> createState() => _NewExpenseState();
 }
@@ -54,7 +54,16 @@ class _NewExpenseState extends State<NewExpense> {
                 ],
               ),
           barrierDismissible: false);
+      return;
     }
+    widget.onAddExpense(
+      Expense(
+        amount: enteredAmount,
+        title: _titleController.text,
+        date: _selectedDate!,
+        catagory: _selectedCatagory,
+      ),
+    );
   }
 
   @override

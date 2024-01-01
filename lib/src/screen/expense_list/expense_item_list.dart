@@ -11,7 +11,7 @@ class ExpeseItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
         child: Column(
-          children: <Widget>[ 
+          children: <Widget>[
             Text(expense.title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
