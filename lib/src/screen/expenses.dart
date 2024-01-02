@@ -43,6 +43,12 @@ class _ExpensesState extends State<Expenses> {
     });
   }
 
+  void _removeExpense(expense) {
+    setState(() {
+      _registerexpenses.remove(expense);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +66,10 @@ class _ExpensesState extends State<Expenses> {
         body: Column(
           children: <Widget>[
             const Text("The chart!"),
-            Expanded(child: EexpensesList(expenses: _registerexpenses))
+            Expanded(
+              child: EexpensesList(
+                  expenses: _registerexpenses, removeExpense: _removeExpense),
+            )
           ],
         ));
   }
