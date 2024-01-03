@@ -14,10 +14,7 @@ class ExpeseItem extends StatelessWidget {
           children: <Widget>[
             Text(expense.title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                )),
+                style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(
               height: 10.0,
             ),
