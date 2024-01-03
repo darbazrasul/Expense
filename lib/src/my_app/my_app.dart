@@ -20,9 +20,13 @@ class MyWidget extends StatelessWidget {
         useMaterial3: true,
         colorScheme: kcolordark,
         cardTheme: const CardTheme().copyWith(
-          color: kcolortheme.secondaryContainer,
+          color: kcolordark.secondaryContainer,
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: kcolordark.primaryContainer,
+                foregroundColor: kcolordark.onPrimaryContainer)),
       ),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true).copyWith(
