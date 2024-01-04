@@ -4,11 +4,12 @@ import 'package:uuid/uuid.dart';
 
 // ignore: constant_identifier_names
 enum Catagory { Food, Travel, Shopping, Medical, Other }
- final formatter=  DateFormat.yMd();
+
+final formatter = DateFormat.yMd();
 const catagoryIcon = {
-  Catagory.Food:Icons.fastfood,
+  Catagory.Food: Icons.fastfood,
   Catagory.Travel: Icons.airplanemode_active,
-  Catagory.Shopping:Icons.shopping_cart,
+  Catagory.Shopping: Icons.shopping_cart,
   Catagory.Medical: Icons.local_hospital,
   Catagory.Other: Icons.category,
 };
@@ -21,7 +22,7 @@ class Expense {
   final DateTime date;
   final Catagory catagory;
 
-  String get formatter{
+  String get formatter {
     return DateFormat.yMd().format(date);
   }
 
@@ -31,4 +32,21 @@ class Expense {
     required this.date,
     required this.catagory,
   }) : id = const Uuid().v4();
+}
+
+class ExpenseBucket {
+  ExpenseBucket({
+    required this.catagory,
+    required this.expenses,
+  });
+
+  final Catagory catagory;
+  final List<Expense> expenses;
+  double sum = 0;
+
+  double get totalAmount {
+    sum += expenses.fold(
+        0, (previousValue, element) => previousValue + element.amount);
+    return sum;
+  }
 }
